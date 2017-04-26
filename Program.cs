@@ -10,6 +10,44 @@ namespace Calendar
     {
         static void Main(string[] args)
         {
+            DateTime dateNow = DateTime.Now;
+            Console.Write("{0}年 {1}月\n", dateNow.Year, dateNow.Month);
+            Console.ReadLine();
+
+            //現在の年月の1日を取得する
+            DateTime dateFirst = DateTime.Parse(string.Format("{0}/{1}/1",
+                dateNow.Year, dateNow.Month));
+            DisplayCalendar(dateFirst); //カレンダーの表示
+            Console.ReadLine();
+        }
+        //1ヶ月分のカレンダーを画面に表示する
+        //パラメータ
+        //dateFirst ：表示したい年月の1日を表すDateTime
+        static void DisplayCalendar(DateTime dateFirst)
+        {
+            int week;
+            int month = dateFirst.Month;
+
+            //曜日タイトルの表示
+            Console.Write("--------------\n");
+            Console.Write("日 月 火 水 木 金 土\n");
+
+            //1日の開始位置まで空白を表示する
+            for (week = 0; week < (int)dateFirst.DayOfWeek; week++)
+                Console.Write("   ");
+
+            //月の終わりの日まで1週間ごとに日にちを表示する
+            while (month == dateFirst.Month)
+            {
+                for (; week < 7 && month == dateFirst.Month; week++)
+                {
+                    Console.Write("{0,2} ", dateFirst.Day);
+                    dateFirst = dateFirst.AddDays(1);   //翌日にする
+                }
+                Console.Write("\n");
+                week = 0;
+            }
+
         }
     }
 }
