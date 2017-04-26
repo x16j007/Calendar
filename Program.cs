@@ -17,7 +17,7 @@ namespace Calendar
             //現在の年月の1日を取得する
             DateTime dateFirst = DateTime.Parse(string.Format("{0}/{1}/1",
                 dateNow.Year, dateNow.Month));
-            DisplayCalendar(dateFirst); //カレンダーの表示
+            //DisplayCalendar(dateFirst); //カレンダーの表示
             Console.ReadLine();
         }
         //1ヶ月分のカレンダーを画面に表示する
